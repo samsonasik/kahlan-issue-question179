@@ -16,6 +16,17 @@ describe('REDIS', function () {
             
         });
         
+        it("redis connected on RedisCall instance", function() {
+
+            $redis = Stub::create(['extends' => 'Redis', 'layer' => true]);
+            Stub::on($redis)->method('connect')->with('127.0.0.1')->andReturn(true);
+            
+            expect($redis->connect('127.0.0.1'))->toBe(true);
+            
+            $redisCall = new \App\RedisCall();
+            $redisCall->connect();
+        });
+        
     });
     
 });
