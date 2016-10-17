@@ -24,7 +24,7 @@ describe('REDIS', function () {
             expect($redis->connect('127.0.0.1'))->toBe(true);
             
             $redisCall = new \App\RedisCall();
-            $redisCall->connect();
+            expect($redisCall->connect())->toBe(true);
         });
         
     });
