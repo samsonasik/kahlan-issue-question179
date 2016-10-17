@@ -12,6 +12,7 @@ describe('REDIS', function () {
 
             $redis = Stub::create(['extends' => 'Redis', 'layer' => true]);
             Stub::on($redis)->method('connect')->andReturn('stubbed');
+            
             expect($redis->connect('127.0.0.1'))->toBe('stubbed');
             
         });
@@ -20,9 +21,7 @@ describe('REDIS', function () {
 
             $redis = Stub::create(['extends' => 'Redis', 'layer' => true]);
             Stub::on($redis)->method('connect')->with('127.0.0.1')->andReturn(true);
-            
-            expect($redis->connect('127.0.0.1'))->toBe(true);
-            
+                        
             $redisCall = new \App\RedisCall();
             expect($redisCall->connect())->toBe(true);
         });
